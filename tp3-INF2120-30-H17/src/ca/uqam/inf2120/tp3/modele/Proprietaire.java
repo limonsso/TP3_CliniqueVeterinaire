@@ -6,7 +6,7 @@ public class Proprietaire {
 	private String adresse;
 	private String telephone;
 	private Patient patient;
-	
+
 	/**
 	 * 
 	 * @return nom
@@ -14,7 +14,7 @@ public class Proprietaire {
 	public String getNom() {
 		return nom;
 	}
-	
+
 	/**
 	 * 
 	 * @return prenom
@@ -22,7 +22,7 @@ public class Proprietaire {
 	public String getPrenom() {
 		return prenom;
 	}
-	
+
 	/**
 	 * 
 	 * @return adresse
@@ -30,7 +30,7 @@ public class Proprietaire {
 	public String getAdresse() {
 		return adresse;
 	}
-	
+
 	/**
 	 * 
 	 * @return telephone
@@ -38,7 +38,7 @@ public class Proprietaire {
 	public String getTelephone() {
 		return telephone;
 	}
-	
+
 	/**
 	 * 
 	 * @return patient
@@ -46,7 +46,7 @@ public class Proprietaire {
 	public Patient getPatient() {
 		return patient;
 	}
-	
+
 	/**
 	 * 
 	 * @param nom
@@ -54,7 +54,7 @@ public class Proprietaire {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
+
 	/**
 	 * 
 	 * @param prenom
@@ -62,7 +62,7 @@ public class Proprietaire {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	
+
 	/**
 	 * 
 	 * @param adresse
@@ -70,7 +70,7 @@ public class Proprietaire {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	
+
 	/**
 	 * 
 	 * @param telephone
@@ -79,8 +79,4 @@ public class Proprietaire {
 		this.telephone = telephone;
 	}
 
-	
-	
-	
-	
 }

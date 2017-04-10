@@ -57,9 +57,9 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 	 * @return identifiant
 	 */
 	public String getIdentifiant() {
-		
-		identifiant = ((nom.length() <= 3) ? nom : nom.substring(0, 4) ).toUpperCase() + nbSequentiel + "";
-				
+
+		identifiant = ((nom.length() <= 3) ? nom : nom.substring(0, 4)).toUpperCase() + nbSequentiel + "";
+
 		return identifiant;
 	}
 
@@ -118,15 +118,14 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 	public static int getNbSequentiel() {
 		return nbSequentiel;
 	}
-	
+
 	/**
 	 * 
-	 * @return  proprietaire
+	 * @return proprietaire
 	 */
 	public Proprietaire getProprietaire() {
 		return proprietaire;
 	}
-	
 
 	/************************* SETTERS ********************/
 	/**
@@ -217,9 +216,5 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 
 		return estEgal;
 	}
-
-	
-	
-
 
 }
