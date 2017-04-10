@@ -13,6 +13,7 @@ public class Proprietaire {
 	 */
 	public String getNom() {
 		return nom;
+		
 	}
 
 	/**

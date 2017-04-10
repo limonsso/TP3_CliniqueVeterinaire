@@ -101,6 +101,7 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 	 */
 	public String getRaisonUrgence() {
 		return raisonUrgence;
+		
 	}
 
 	/**
