@@ -21,6 +21,7 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 	private String raisonUrgence;
 	private int priorite;
 	private static int nbSequentiel = 0;
+	private Proprietaire proprietaire;
 
 	public Patient() {
 		dateHeureCreation = new GregorianCalendar();
@@ -117,6 +118,15 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 	public static int getNbSequentiel() {
 		return nbSequentiel;
 	}
+	
+	/**
+	 * 
+	 * @return  proprietaire
+	 */
+	public Proprietaire getProprietaire() {
+		return proprietaire;
+	}
+	
 
 	/************************* SETTERS ********************/
 	/**
@@ -207,6 +217,8 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 
 		return estEgal;
 	}
+
+	
 	
 
 
