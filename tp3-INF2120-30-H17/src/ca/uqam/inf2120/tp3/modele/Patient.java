@@ -23,7 +23,7 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 	private static int nbSequentiel = 0;
 
 	public Patient() {
-
+		dateHeureCreation = new GregorianCalendar();
 		nbSequentiel++;
 	}
 
@@ -46,6 +46,7 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 		this.dateHeureCreation = dateHeureCreation;
 		this.raisonUrgence = raisonUrgence;
 		this.priorite = priorite;
+		dateHeureCreation = new GregorianCalendar();
 		nbSequentiel++;
 	}
 
@@ -55,6 +56,9 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 	 * @return identifiant
 	 */
 	public String getIdentifiant() {
+		
+		identifiant = ((nom.length() <= 3) ? nom : nom.substring(0, 4) ).toUpperCase() + nbSequentiel + "";
+				
 		return identifiant;
 	}
 
@@ -203,5 +207,7 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 
 		return estEgal;
 	}
+	
+
 
 }
