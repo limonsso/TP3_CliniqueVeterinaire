@@ -144,7 +144,7 @@ public class FileAttenteImpl<T extends OrdonnableParPrioriteEtDateHeure> impleme
 		} else {
 			listeRetournee = null;
 		}
-		return listeRetournee;
+		return (listeRetournee.size() == 0) ? null : listeRetournee;
 	}
 
 	@Override
