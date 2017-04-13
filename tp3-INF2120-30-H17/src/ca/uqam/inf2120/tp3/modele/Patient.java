@@ -5,9 +5,15 @@ import java.util.GregorianCalendar;
 import ca.uqam.inf2120.tp1.adt.OrdonnableParPrioriteEtDateHeure;
 
 /**
+ * UQAM - Hiver 2017 - INF2120 - Groupe 30 - TP3 
  * 
- * @author serges- Michel Doumo
- *
+ * Classe Patient (FÈlin, Canin, ou autre): contient les informations 
+ * d'un patient de la Clinique vÈtÈrinaire.
+ *    
+ * @author Ismael Doukoure
+ * ComplÈtÈ par : Doumo Doumo  Serges=Michel - DOUS20078401
+ * 
+ * @version 5 avril 2017
  */
 
 public class Patient implements OrdonnableParPrioriteEtDateHeure {
@@ -17,142 +23,80 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 	private String espece;
 	private String nom;
 	private String age;
-	private GregorianCalendar dateHeureCreation;
+	private GregorianCalendar dateHeureArrivee;
 	private String raisonUrgence;
 	private int priorite;
-	private static int nbSequentiel = 0;
 	private Proprietaire proprietaire;
-
-	public Patient() {
-		dateHeureCreation = new GregorianCalendar();
-		nbSequentiel++;
-	}
-
+	private static int nbSequentiel = 0;
+	
+	
+	
+	
 	/**
-	 * @param identifiant
-	 * @param espece
+	 * 
 	 * @param nom
 	 * @param age
-	 * @param dateHeureCreation
+	 * @param espece
 	 * @param raisonUrgence
 	 * @param priorite
+	 * @param proprietaire
 	 */
-	public Patient(String identifiant, String espece, String nom, String age, GregorianCalendar dateHeureCreation,
-			String raisonUrgence, int priorite) {
-
-		this.identifiant = identifiant;
-		this.espece = espece;
+	public Patient(String nom, String age, String espece, String raisonUrgence,
+			       int priorite, Proprietaire proprietaire) {
+		
 		this.nom = nom;
 		this.age = age;
-		this.dateHeureCreation = dateHeureCreation;
+		this.espece = espece;
 		this.raisonUrgence = raisonUrgence;
 		this.priorite = priorite;
-		dateHeureCreation = new GregorianCalendar();
+		this.proprietaire = proprietaire;
+		identifiant = construireIdentifiant();
+		dateHeureArrivee = new GregorianCalendar();
 		nbSequentiel++;
+	
 	}
-
-	/***************** GETTERS ************************/
+	
+	
+	
 	/**
+	 * Construit l'identifiant en concatenant les trois (3) premiers caractËres 
+	 * du nom du patient et un numÈro sÈquentiel . le numÈro sÈquentiel doit Ítre 
+	 * un attribut statique de type int qui s'incrÈmente chaque fois qu'on construit
+	 * un identifiant. Cet attribut doit Ítre dÈclarÈ dans la classe Patient.
 	 * 
-	 * @return identifiant
+	 * Si le nombre de caractËres composant le nom du patient est moins que trois (3)
+	 * caractËres, le caractËre 'X' est utilisÈ pour les caractËres manquants.
+	 * 
+	 * Exemple : 
+	 *   - nom du 1er patient  = Isidor,   l'identifiant = "ISI1
+	 *   - nom du 2e patient  =  Betty,    l'identifiant = "BET2
+	 *   - nom du 3e patient  =  Ya,       l'identifiant = "YAX3
+	 * 
 	 */
-	public String getIdentifiant() {
-
-		identifiant = ((nom.length() <= 3) ? nom : nom.substring(0, 4)).toUpperCase() + nbSequentiel + "";
-
+	public String construireIdentifiant() {
+		String identifiant = null;
+		
+		while(nom.length() > 0){
+			
+			if (nom.length() == 1) {
+				
+				identifiant = nom.trim().toUpperCase() + "XX" + nbSequentiel + " ";
+				
+			} else if (nom.length() ==2) {
+				
+				identifiant = nom.trim().toUpperCase() + "X" + nbSequentiel + " ";
+				
+			} 
+			
+				identifiant = nom.trim().toUpperCase() + nbSequentiel + " ";
+			
+		}
+		
+		
 		return identifiant;
 	}
-
-	/**
-	 * 
-	 * @return espece
-	 */
-	public String getEspece() {
-		return espece;
-	}
-
-	/**
-	 * 
-	 * @return nom
-	 */
-	public String getNom() {
-		return nom;
-	}
-
-	/**
-	 * 
-	 * @return age
-	 */
-	public String getAge() {
-		return age;
-	}
-
-	/**
-	 * 
-	 * @return dateHeureCreation
-	 */
-	public GregorianCalendar getDateHeureCreation() {
-		return dateHeureCreation;
-	}
-
-	/**
-	 * 
-	 * @return dateHeureCreation
-	 */
-	public String getRaisonUrgence() {
-		return raisonUrgence;
-		
-	}
-
-	/**
-	 * 
-	 * @return priorite
-	 */
-	public int getPriorite() {
-		return priorite;
-	}
-
-	/**
-	 * 
-	 * @return nbSequentiel
-	 */
-	public static int getNbSequentiel() {
-		return nbSequentiel;
-	}
-
-	/**
-	 * 
-	 * @return proprietaire
-	 */
-	public Proprietaire getProprietaire() {
-		return proprietaire;
-	}
-
-	/************************* SETTERS ********************/
-	/**
-	 * 
-	 * @param espece
-	 */
-	public void setEspece(String espece) {
-		this.espece = espece;
-	}
-
-	/**
-	 * 
-	 * @param age
-	 */
-	public void setAge(String age) {
-		this.age = age;
-	}
-
-	/**
-	 * 
-	 * @param raisonUrgence
-	 */
-	public void setRaisonUrgence(String raisonUrgence) {
-		this.raisonUrgence = raisonUrgence;
-	}
-
+	
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -165,7 +109,7 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 		this.priorite = priorite;
 
 	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -186,8 +130,9 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 	 */
 	@Override
 	public GregorianCalendar obtenirDateHeureCreation() {
-		return dateHeureCreation;
+		return dateHeureArrivee;
 	}
+
 
 	/*
 	 * (non-Javadoc)
@@ -217,5 +162,101 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 
 		return estEgal;
 	}
+	
+	
+
+	/**
+	 * 
+	 * @return identifiant
+	 */
+	public String getIdentifiant() {
+		
+		return identifiant;
+	}
+
+	/**
+	 * 
+	 * @return espece
+	 */
+	public String getEspece() {
+		return espece;
+	}
+
+	/**
+	 * 
+	 * @return nom
+	 */
+	public String getNom() {
+		return nom;
+	}
+
+	/**
+	 * 
+	 * @return age
+	 */
+	public String getAge() {
+		return age;
+	}
+
+	
+
+	/**
+	 * 
+	 * @return raisonUrgence
+	 */
+	public String getRaisonUrgence() {
+		return raisonUrgence;
+		
+	}
+
+
+	/**
+	 * 
+	 * @return nbSequentiel
+	 */
+	public static int getNbSequentiel() {
+		return nbSequentiel;
+	}
+
+	/**
+	 * 
+	 * @return proprietaire
+	 */
+	public Proprietaire getProprietaire() {
+		
+		return proprietaire;
+	}
+
+	
+	/**
+	 * 
+	 * @param espece
+	 */
+	public void setEspece(String espece) {
+		this.espece = espece;
+	}
+
+	/**
+	 * 
+	 * @param age
+	 */
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	/**
+	 * 
+	 * @param raisonUrgence
+	 */
+	public void setRaisonUrgence(String raisonUrgence) {
+		this.raisonUrgence = raisonUrgence;
+	}
+
+	
+
+	
+	
+
+
 
 }
