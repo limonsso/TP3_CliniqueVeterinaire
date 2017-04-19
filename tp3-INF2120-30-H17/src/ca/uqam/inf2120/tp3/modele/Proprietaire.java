@@ -5,7 +5,19 @@ public class Proprietaire {
 	private String prenom;
 	private String adresse;
 	private String telephone;
-	private Patient patient;
+
+	/**
+	 * @param nom
+	 * @param prenom
+	 * @param adresse
+	 * @param telephone
+	 */
+	public Proprietaire(String nom, String prenom, String adresse, String telephone) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.telephone = telephone;
+	}
 
 	/**
 	 * 
@@ -13,7 +25,7 @@ public class Proprietaire {
 	 */
 	public String getNom() {
 		return nom;
-		
+
 	}
 
 	/**
@@ -38,14 +50,6 @@ public class Proprietaire {
 	 */
 	public String getTelephone() {
 		return telephone;
-	}
-
-	/**
-	 * 
-	 * @return patient
-	 */
-	public Patient getPatient() {
-		return patient;
 	}
 
 	/**
