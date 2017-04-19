@@ -200,7 +200,7 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 		boolean estEgal = false;
 
 		// Si les 2 objets sont identiques, on doit retourner
-		// vrai comme rï¿½sultat.
+		// vrai comme résultat.
 		if (this == unAutreObjet) {
 			estEgal = true;
 
