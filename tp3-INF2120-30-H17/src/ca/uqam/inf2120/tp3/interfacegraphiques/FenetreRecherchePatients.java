@@ -167,13 +167,13 @@ public class FenetreRecherchePatients extends JFrame {
 		tablePatients.setModel(Value);
 
 		tablePatients.setRowSelectionInterval(0, 0);
-		/*tablePatients.getColumnModel().getColumn(0).setPreferredWidth(5);
+		tablePatients.getColumnModel().getColumn(0).setPreferredWidth(5);
 		tablePatients.getColumnModel().getColumn(1).setResizable(false);
 		tablePatients.getColumnModel().getColumn(1).setPreferredWidth(8);
 		tablePatients.getColumnModel().getColumn(2).setResizable(false);
 		tablePatients.getColumnModel().getColumn(2).setPreferredWidth(10);
 		tablePatients.getColumnModel().getColumn(3).setResizable(false);
-		tablePatients.getColumnModel().getColumn(3).setPreferredWidth(50);*/
+		tablePatients.getColumnModel().getColumn(3).setPreferredWidth(50);
 		
 		JTableHeader header = tablePatients.getTableHeader();
 		header.setFont(new Font("Dialog", Font.BOLD, 12));

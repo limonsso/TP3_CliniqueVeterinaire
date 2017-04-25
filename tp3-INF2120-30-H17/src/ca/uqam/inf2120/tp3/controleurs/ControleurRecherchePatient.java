@@ -21,6 +21,8 @@ public class ControleurRecherchePatient extends ControleurPatient {
 	private List<Patient> Resultat;
 	private String[] entete ;
 	private Object[][] data;
+	
+	
 	public ControleurRecherchePatient(FenetreRecherchePatients _fenetreRecherche) {
 		super();
 		this.uneVue =_fenetreRecherche;
@@ -53,13 +55,12 @@ public class ControleurRecherchePatient extends ControleurPatient {
         	{
 	        	if(this.uneVue.getRdbtnIdentifiant().isSelected()){
 	        		Patient PatientRecherche = this.Model.rechercherParIndentifiant(valeurRecherche);
-	        		Resultat.add(PatientRecherche);
+	        		
 	        		if(PatientRecherche!=null)
 	        		{
+	        			Resultat.add(PatientRecherche);
 	        			FillData();
-	        		}
-	        		else
-	        		{
+	        		}else{
 	        			JOptionPane.showMessageDialog(this.uneVue,
 	        					"Aucun patient avec l'identifiant "+valeurRecherche+" !",
 	        					"SPT- Information",
@@ -69,7 +70,6 @@ public class ControleurRecherchePatient extends ControleurPatient {
 	        		}
 	        	}
 	        	if(this.uneVue.getRdbtnEgalepiorite().isSelected()){
-	        		
 	        	}
 	        	if(this.uneVue.getRdbtnInfpiorite().isSelected()){
 		
