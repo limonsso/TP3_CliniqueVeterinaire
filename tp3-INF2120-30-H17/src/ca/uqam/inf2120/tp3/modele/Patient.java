@@ -18,7 +18,7 @@ import ca.uqam.inf2120.tp1.adt.OrdonnableParPrioriteEtDateHeure;
 
 public class Patient implements OrdonnableParPrioriteEtDateHeure {
 
-	// D�claration des attributs
+	// Déclaration des attributs
 	private String identifiant;
 	private String espece;
 	private String nom;
@@ -50,10 +50,9 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 		this.raisonUrgence = raisonUrgence;
 		this.priorite = priorite;
 		this.proprietaire = proprietaire;
-		identifiant = construireIdentifiant();
 		dateHeureArrivee = new GregorianCalendar();
 		nbSequentiel++;
-	
+		identifiant = construireIdentifiant();
 	}
 	
 	
@@ -76,7 +75,7 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 	public String construireIdentifiant() {
 		String identifiant = null;
 		
-		while(nom.length() > 0){
+		if(nom.length() > 0){
 			
 			if (nom.length() == 1) {
 				
@@ -87,7 +86,7 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 				identifiant = nom.trim().toUpperCase() + "X" + nbSequentiel + " ";
 				
 			} 
-			
+			else
 				identifiant = nom.trim().toUpperCase() + nbSequentiel + " ";
 			
 		}

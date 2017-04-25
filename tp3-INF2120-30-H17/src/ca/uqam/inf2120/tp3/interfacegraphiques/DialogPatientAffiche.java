@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -29,6 +30,15 @@ public class DialogPatientAffiche extends DialogPatient {
 			frame.setVisible(true);
 	
 		
+	}
+	public DialogPatientAffiche(JFrame Parent) {
+		super(Parent);
+		setTitle("SPT- Affichage d'un patient");
+		this.setBounds(100, 100, PANEL_WIDTH+30, 510);
+		//this.initPanelTop();
+		initPanelInfoPatiant();
+		this.initPanelInfoProprietaire();
+		initPanelBottom();
 	}
 	
 	public DialogPatientAffiche() {
@@ -112,7 +122,7 @@ public class DialogPatientAffiche extends DialogPatient {
 		panelBas.setPreferredSize(new Dimension(PANEL_WIDTH, 50));
 		contentPane.add(panelBas);
 		
-		JButton btnFermer = new JButton("Fermer");
+		btnFermer = new JButton("Fermer");
 		panelBas.add(btnFermer);
 	}
 

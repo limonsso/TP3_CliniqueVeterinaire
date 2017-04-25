@@ -9,6 +9,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -42,7 +43,14 @@ public class DialogPatientEditer extends DialogPatient {
 		initPanelBottom();
 	}
 
-
+	public DialogPatientEditer(JFrame Parent) {
+		super(Parent);
+		setTitle("SPT- Modification d'un patient");
+		this.initPanelTop();
+		initPanelInfoPatiant();
+		this.initPanelInfoProprietaire();
+		initPanelBottom();
+	}
 
 	@Override
 	public void initPanelInfoPatiant() {
@@ -113,10 +121,10 @@ public class DialogPatientEditer extends DialogPatient {
 		panelBas.setPreferredSize(new Dimension(PANEL_WIDTH, 50));
 		contentPane.add(panelBas);
 		
-		JButton btnModifier = new JButton("Modifier");
+		btnModifier = new JButton("Modifier");
 		panelBas.add(btnModifier);
 		
-		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler = new JButton("Annuler");
 		panelBas.add(btnAnnuler);
 	}
 

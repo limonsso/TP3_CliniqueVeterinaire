@@ -9,6 +9,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -26,7 +27,7 @@ public class DialogPatientAjout extends DialogPatient {
 	 *Créer un dialogue et le rendre visible.
 	 */
 	public static void main(String[] args) {
-		
+			
 			DialogPatient frame = new DialogPatientAjout();
 			frame.setModal(true);
 			frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -34,6 +35,18 @@ public class DialogPatientAjout extends DialogPatient {
 	
 		
 	}
+	public DialogPatientAjout(JFrame Parent) {
+		super(Parent);
+		setTitle("SPT- Ajout d'un patient");
+		this.setBounds(100, 100, PANEL_WIDTH+30, 475);
+		this.initPanelTop();
+		initPanelInfoPatiant();
+		this.initPanelInfoProprietaire();
+		initPanelBottom();
+		btnAjouter.addActionListener(controleurDialogPatient);
+		btnAnnuler.addActionListener(controleurDialogPatient);
+	}
+	
 	public DialogPatientAjout() {
 		super();
 		setTitle("SPT- Ajout d'un patient");
@@ -95,11 +108,22 @@ public class DialogPatientAjout extends DialogPatient {
 		panelBas.setPreferredSize(new Dimension(PANEL_WIDTH, 50));
 		contentPane.add(panelBas);
 		
-		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter = new JButton("Ajouter");
 		panelBas.add(btnAjouter);
 		
-		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler = new JButton("Annuler");
 		panelBas.add(btnAnnuler);
+	}
+	@Override
+	public void Refresh() {
+		this.tFNom.setText("");
+		this.tFAge.setText("");
+		this.tFRaison.setText("");
+		this.tFNomP.setText("");
+		this.tFPrenomP.setText("");
+		this.tFAdresse.setText("");
+		this.tFTel.setText("");
+		this.cboPriorite.setSelectedIndex(0);
 	}
 	
 
