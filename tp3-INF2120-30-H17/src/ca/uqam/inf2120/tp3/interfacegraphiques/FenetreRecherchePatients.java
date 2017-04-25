@@ -148,7 +148,7 @@ public class FenetreRecherchePatients extends JFrame {
 		btnRechercher = new JButton("Rechercher");
 		panelCenter.add(btnRechercher);
 
-		
+		 
 	}
 	
 	/**
