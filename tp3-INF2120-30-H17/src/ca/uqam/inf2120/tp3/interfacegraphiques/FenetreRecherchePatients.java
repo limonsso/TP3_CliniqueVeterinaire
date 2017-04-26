@@ -316,5 +316,9 @@ public class FenetreRecherchePatients extends JFrame {
 		return tfRecherche;
 	}
 
+	public JTable getTablePatients() {
+		return tablePatients;
+	}
+
 
 }

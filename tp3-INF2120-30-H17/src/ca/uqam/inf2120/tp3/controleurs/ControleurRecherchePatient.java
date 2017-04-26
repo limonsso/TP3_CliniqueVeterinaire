@@ -198,11 +198,25 @@ public class ControleurRecherchePatient extends ControleurPatient {
         	EditerPatient.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         	EditerPatient.setVisible(true);
         }
-      //Bouton "Modifier"
+      //Bouton "Afficher"
         if(source == this.uneVue.getBtnAfficher())
         {
         	DialogPatientAffiche AfficherPatient = new DialogPatientAffiche(this.uneVue);
         	ControleurDialogP = new ControleurDialogPatient(AfficherPatient,this.Model);
+        	AfficherPatient.Value = new Object[5];
+        	String Id = this.uneVue.getTablePatients().getValueAt(uneVue.getTablePatients().getSelectedRow(), 0).toString();
+        	Patient unPatient = this.Model.rechercherParIndentifiant(Id);       			
+        	AfficherPatient.gettFId().setText(Id);
+        	AfficherPatient.gettFNom().setText(unPatient.getNom());
+        	AfficherPatient.gettFAge().setText(unPatient.getAge());
+        	AfficherPatient.gettFRaison().setText(unPatient.getRaisonUrgence());
+        	AfficherPatient.gettFPriorite().setText(unPatient.obtenirPriorite()+"");
+        	SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    		AfficherPatient.gettFDate().setText(formatDate.format(unPatient.obtenirDateHeureCreation().getTime()));
+    		AfficherPatient.gettFNomP().setText(unPatient.getProprietaire().getNom());
+    		AfficherPatient.gettFPrenomP().setText(unPatient.getProprietaire().getPrenom());
+    		AfficherPatient.gettFAdresse().setText(unPatient.getProprietaire().getAdresse());
+    		AfficherPatient.gettFTel().setText(unPatient.getProprietaire().getTelephone());
         	AfficherPatient.setControleurDialogPatient(ControleurDialogP);
         	AfficherPatient.setModal(true);
         	AfficherPatient.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

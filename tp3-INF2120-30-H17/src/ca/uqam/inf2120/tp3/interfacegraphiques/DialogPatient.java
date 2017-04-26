@@ -55,7 +55,7 @@ public abstract class DialogPatient extends JDialog {
 	protected JButton btnAjouter;
 	protected JButton btnModifier;
 	protected JButton btnAnnuler;
-	
+	public Object[] Value;
 
 	protected static final int PANEL_WIDTH = 350;  
 	/**

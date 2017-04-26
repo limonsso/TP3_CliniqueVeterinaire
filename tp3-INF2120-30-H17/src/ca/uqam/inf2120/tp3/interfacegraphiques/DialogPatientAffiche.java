@@ -131,6 +131,7 @@ public class DialogPatientAffiche extends DialogPatient {
 
 	public void setControleurDialogPatient(ControleurDialogPatient controleurDialogPatient) {
 		super.setControleurDialogPatient(controleurDialogPatient);
+		this.Refresh();
 		btnFermer.addActionListener(super.getControleurDialogPatient());
 	}
 }
