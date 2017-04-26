@@ -22,17 +22,17 @@ public class ControleurRecherchePatient extends ControleurPatient {
 	private List<Patient> Resultat;
 	private String[] entete ;
 	private Object[][] data;
-	
+	private ControleurDialogPatient ControleurDialogP;
 	
 	public ControleurRecherchePatient(FenetreRecherchePatients _fenetreRecherche) {
 		super();
 		this.uneVue =_fenetreRecherche;
 		Resultat = new ArrayList<Patient>();
 		entete = new String[] { "Identifiant", "Nom",
-				"Prioritï¿½", "Date / Heure d'arrivï¿½e","Nom et prï¿½nom du propriotaire"  };
+				"Priorité", "Date / Heure d'arrivée","Nom et prénom du propriotaire"  };
 		
 		Proprietaire proprioTest = new Proprietaire("Zekinan","Limonsso","","");
-		Patient patientTest = new Patient("Milou","2 ans","FÃ©lin","Grippe",2,proprioTest);
+		Patient patientTest = new Patient("Milou","2 ans","Félin","Grippe",2,proprioTest);
 		
 		Proprietaire proprioTest2 = new Proprietaire("Serge","Limonsso","","");
 		Patient patientTest2 = new Patient("Bobi","4 ans","Canin","Grippe",4,proprioTest2);
@@ -133,14 +133,14 @@ public class ControleurRecherchePatient extends ControleurPatient {
 		        		if(!FillData())
 		            	{
 		            		JOptionPane.showMessageDialog(this.uneVue,
-		        					"Aucun patient n'a une prioritÃ© infÃ©rieure Ã  " + priorite + " dans le systï¿½me ",
+		        					"Aucun patient n'a une priorité infÃ©rieure Ã  " + priorite + " dans le systï¿½me ",
 		        					"SPT- Information",
 		        					JOptionPane.INFORMATION_MESSAGE);
 		            	}
 	        		} catch (NumberFormatException ex ) { 
 	        			
 	        			JOptionPane.showMessageDialog(this.uneVue,
-	        					"Rentrez une valeur numÃ©rique s'il vous plait ",
+	        					"Rentrez une valeur numérique s'il vous plait ",
 	        					"SPT- Information",
 	        					JOptionPane.ERROR_MESSAGE);
 	        		}
@@ -157,14 +157,14 @@ public class ControleurRecherchePatient extends ControleurPatient {
 		        		if(!FillData())
 		            	{
 		            		JOptionPane.showMessageDialog(this.uneVue,
-		        					"Aucun patient n'a une prioritÃ© supÃ©rieure Ã  " + priorite + " dans le systï¿½me ",
+		        					"Aucun patient n'a une priorité supérieure a  " + priorite + " dans le système ",
 		        					"SPT- Information",
 		        					JOptionPane.INFORMATION_MESSAGE);
 		            	}
 	        		} catch (NumberFormatException ex ) { 
 	        			
 	        			JOptionPane.showMessageDialog(this.uneVue,
-	        					"Rentrez une valeur numÃ©rique s'il vous plait ",
+	        					"Rentrez une valeur numérique s'il vous plait ",
 	        					"SPT- Information",
 	        					JOptionPane.ERROR_MESSAGE);
 	        		}
@@ -180,7 +180,10 @@ public class ControleurRecherchePatient extends ControleurPatient {
         //Bouton "Ajouter"
         if(source == this.uneVue.getBtnAjouter())
         {
+        	
         	DialogPatientAjout AjoutPatient = new DialogPatientAjout(this.uneVue);
+        	ControleurDialogP = new ControleurDialogPatient(AjoutPatient,this.Model);
+        	AjoutPatient.setControleurDialogPatient(ControleurDialogP);
         	AjoutPatient.setModal(true);
         	AjoutPatient.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         	AjoutPatient.setVisible(true);
@@ -189,6 +192,8 @@ public class ControleurRecherchePatient extends ControleurPatient {
         if(source == this.uneVue.getBtnModifier())
         {
         	DialogPatientEditer EditerPatient = new DialogPatientEditer(this.uneVue);
+        	ControleurDialogP = new ControleurDialogPatient(EditerPatient,this.Model);
+        	EditerPatient.setControleurDialogPatient(ControleurDialogP);
         	EditerPatient.setModal(true);
         	EditerPatient.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         	EditerPatient.setVisible(true);
@@ -197,6 +202,8 @@ public class ControleurRecherchePatient extends ControleurPatient {
         if(source == this.uneVue.getBtnAfficher())
         {
         	DialogPatientAffiche AfficherPatient = new DialogPatientAffiche(this.uneVue);
+        	ControleurDialogP = new ControleurDialogPatient(AfficherPatient,this.Model);
+        	AfficherPatient.setControleurDialogPatient(ControleurDialogP);
         	AfficherPatient.setModal(true);
         	AfficherPatient.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         	AfficherPatient.setVisible(true);

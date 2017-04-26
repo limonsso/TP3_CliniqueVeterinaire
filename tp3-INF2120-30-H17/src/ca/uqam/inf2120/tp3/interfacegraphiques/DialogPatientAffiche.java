@@ -14,6 +14,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import ca.uqam.inf2120.tp3.controleurs.ControleurDialogPatient;
+
+
 public class DialogPatientAffiche extends DialogPatient {
 
 	
@@ -126,5 +129,8 @@ public class DialogPatientAffiche extends DialogPatient {
 		panelBas.add(btnFermer);
 	}
 
-
+	public void setControleurDialogPatient(ControleurDialogPatient controleurDialogPatient) {
+		super.setControleurDialogPatient(controleurDialogPatient);
+		btnFermer.addActionListener(super.getControleurDialogPatient());
+	}
 }

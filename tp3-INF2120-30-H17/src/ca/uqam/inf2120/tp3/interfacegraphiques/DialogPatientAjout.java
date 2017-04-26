@@ -16,6 +16,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import ca.uqam.inf2120.tp3.controleurs.ControleurDialogPatient;
+
+
+
 public class DialogPatientAjout extends DialogPatient {
 
 	
@@ -43,8 +47,8 @@ public class DialogPatientAjout extends DialogPatient {
 		initPanelInfoPatiant();
 		this.initPanelInfoProprietaire();
 		initPanelBottom();
-		btnAjouter.addActionListener(controleurDialogPatient);
-		btnAnnuler.addActionListener(controleurDialogPatient);
+		//btnAjouter.addActionListener(controleurDialogPatient);
+		//btnAnnuler.addActionListener(controleurDialogPatient);
 	}
 	
 	public DialogPatientAjout() {
@@ -126,5 +130,10 @@ public class DialogPatientAjout extends DialogPatient {
 		this.cboPriorite.setSelectedIndex(0);
 	}
 	
+	public void setControleurDialogPatient(ControleurDialogPatient controleurDialogPatient) {
+		super.setControleurDialogPatient(controleurDialogPatient);
+		btnAjouter.addActionListener(super.getControleurDialogPatient());
+		btnAnnuler.addActionListener(super.getControleurDialogPatient());
+	}
 
 }

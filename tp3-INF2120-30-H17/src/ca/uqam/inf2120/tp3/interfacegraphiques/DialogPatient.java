@@ -276,6 +276,12 @@ public abstract class DialogPatient extends JDialog {
 	public void settFAdresse(JTextArea tFAdresse) {
 		this.tFAdresse = tFAdresse;
 	}
+	public ControleurDialogPatient getControleurDialogPatient() {
+		return controleurDialogPatient;
+	}
+	public void setControleurDialogPatient(ControleurDialogPatient controleurDialogPatient) {
+		this.controleurDialogPatient = controleurDialogPatient;
+	}
 	
 	
 }

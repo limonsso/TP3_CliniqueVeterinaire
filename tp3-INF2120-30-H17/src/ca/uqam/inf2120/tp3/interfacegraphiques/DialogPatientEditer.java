@@ -16,6 +16,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import ca.uqam.inf2120.tp3.controleurs.ControleurDialogPatient;
+
 public class DialogPatientEditer extends DialogPatient {
 
 	
@@ -127,5 +129,10 @@ public class DialogPatientEditer extends DialogPatient {
 		btnAnnuler = new JButton("Annuler");
 		panelBas.add(btnAnnuler);
 	}
-
+	
+	public void setControleurDialogPatient(ControleurDialogPatient controleurDialogPatient) {
+		super.setControleurDialogPatient(controleurDialogPatient);
+		btnAnnuler.addActionListener(super.getControleurDialogPatient());
+		btnModifier.addActionListener(super.getControleurDialogPatient());
+	}
 }

@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 import ca.uqam.inf2120.tp3.interfacegraphiques.DialogPatient;
+import ca.uqam.inf2120.tp3.modele.GestionUrgenceCliniqueVeterinaire;
 import ca.uqam.inf2120.tp3.modele.Patient;
 import ca.uqam.inf2120.tp3.modele.Proprietaire;
 
@@ -15,7 +16,10 @@ public class ControleurDialogPatient extends ControleurPatient {
 		super();
 		this.uneVue=_dialogPatient;
 	}
-	
+	public ControleurDialogPatient(DialogPatient _dialogPatient, GestionUrgenceCliniqueVeterinaire model) {
+		super(model);
+		this.uneVue=_dialogPatient;
+	}
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		// Obtenir la source de l'événement.
