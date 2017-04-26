@@ -179,7 +179,7 @@ public class FenetreRecherchePatients extends JFrame {
 		header.setFont(new Font("Dialog", Font.BOLD, 12));
 		
 		scrollPane = new JScrollPane(tablePatients);
-		scrollPane.setPreferredSize(new Dimension(580, 60));
+		scrollPane.setPreferredSize(new Dimension(580, 70));
 		panelTable.add(scrollPane);
 		scrollPane.setVisible(false);
 	}
@@ -247,11 +247,19 @@ public class FenetreRecherchePatients extends JFrame {
 		tablePatients.getColumnModel().getColumn(2).setPreferredWidth(10);
 		tablePatients.getColumnModel().getColumn(3).setResizable(false);
 		tablePatients.getColumnModel().getColumn(3).setPreferredWidth(50);
+		btnModifier.setEnabled(true);
+		btnSupprimer.setEnabled(true);
+		btnAfficher.setEnabled(true);
 		scrollPane.setVisible(true);
 		panelTable.validate();
 		panelTable.repaint();
+		
 		}else{
 			Value = creerModeleAvecColonnesNonEditables();
+			scrollPane.setVisible(false);
+			btnModifier.setEnabled(false);
+			btnSupprimer.setEnabled(false);
+			btnAfficher.setEnabled(false);
 			scrollPane.setVisible(false);
 			panelTable.validate();
 			panelTable.repaint();

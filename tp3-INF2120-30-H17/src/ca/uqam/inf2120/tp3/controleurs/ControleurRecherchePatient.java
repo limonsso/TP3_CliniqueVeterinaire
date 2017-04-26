@@ -106,14 +106,14 @@ public class ControleurRecherchePatient extends ControleurPatient {
 		        		if(!FillData())
 		            	{
 		            		JOptionPane.showMessageDialog(this.uneVue,
-		        					"Aucun patient n'a la prioritÃ© " + priorite + " dans le systï¿½me ",
+		        					"Aucun patient n'a la priorité " + priorite + " dans le système ",
 		        					"SPT- Information",
 		        					JOptionPane.INFORMATION_MESSAGE);
 		            	}
 	        		} catch (NumberFormatException ex ) { 
 	        			
 	        			JOptionPane.showMessageDialog(this.uneVue,
-	        					"Rentrez une valeur numÃ©rique s'il vous plait ",
+	        					"Rentrez une valeur numérique s'il vous plait ",
 	        					"SPT- Information",
 	        					JOptionPane.ERROR_MESSAGE);
 	        		}
@@ -133,7 +133,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
 		        		if(!FillData())
 		            	{
 		            		JOptionPane.showMessageDialog(this.uneVue,
-		        					"Aucun patient n'a une priorité infÃ©rieure Ã  " + priorite + " dans le systï¿½me ",
+		        					"Aucun patient n'a une priorité inférieure a  " + priorite + " dans le système ",
 		        					"SPT- Information",
 		        					JOptionPane.INFORMATION_MESSAGE);
 		            	}
