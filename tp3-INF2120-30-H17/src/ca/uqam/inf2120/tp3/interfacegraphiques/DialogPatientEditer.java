@@ -58,7 +58,7 @@ public class DialogPatientEditer extends DialogPatient {
 	public void initPanelInfoPatiant() {
 		super.initPanelInfoPatiant();
 		JPanel panelCenter = new JPanel();
-		panelCenter.setBorder(new TitledBorder(null, "Informations générale du patient",
+		panelCenter.setBorder(new TitledBorder(null, "Informations gï¿½nï¿½rale du patient",
 				TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelCenter.setPreferredSize(new Dimension(PANEL_WIDTH,240));
 		contentPane.add(panelCenter);
@@ -80,7 +80,7 @@ public class DialogPatientEditer extends DialogPatient {
 		tFNom.setColumns(10);
 		tFNom.setEditable(false);
 		
-		JLabel lblAge = new JLabel("Âge :");
+		JLabel lblAge = new JLabel("ï¿½ge :");
 		panelCenter.add(lblAge);
 		tFAge = new JTextField(); 
 		tFAge.setText("");
@@ -96,16 +96,16 @@ public class DialogPatientEditer extends DialogPatient {
 		tFRaison.setRows(20);
 		tFRaison.setColumns(10);
 		
-		JLabel lblPriorite = new JLabel("Priorité :");
+		JLabel lblPriorite = new JLabel("Prioritï¿½ :");
 		panelCenter.add(lblPriorite);
 		
 		cboPriorite = new JComboBox<Integer>();
 		cboPriorite.setEditable(true);
-		cboPriorite.setModel(new DefaultComboBoxModel<Integer>(new Integer[]{1,2,3,4,5,6,7,8,9,10}));
+		cboPriorite.setModel(new DefaultComboBoxModel<Integer>(new Integer[]{1,2,3,4,5}));
 		panelCenter.add(cboPriorite);
 		cboPriorite.setEditable(false);
 		
-		JLabel lblDate = new JLabel("Date / Heure d'arrivée :");
+		JLabel lblDate = new JLabel("Date / Heure d'arrivï¿½e :");
 		panelCenter.add(lblDate);
 		
 		tFDate = new JTextField();
