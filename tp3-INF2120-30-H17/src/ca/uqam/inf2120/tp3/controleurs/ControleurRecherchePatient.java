@@ -14,6 +14,7 @@ import ca.uqam.inf2120.tp3.interfacegraphiques.DialogPatientAjout;
 import ca.uqam.inf2120.tp3.interfacegraphiques.DialogPatientEditer;
 import ca.uqam.inf2120.tp3.interfacegraphiques.FenetreRecherchePatients;
 import ca.uqam.inf2120.tp3.modele.Patient;
+import ca.uqam.inf2120.tp3.modele.Proprietaire;
 
 public class ControleurRecherchePatient extends ControleurPatient {
 	
@@ -28,13 +29,38 @@ public class ControleurRecherchePatient extends ControleurPatient {
 		this.uneVue =_fenetreRecherche;
 		Resultat = new ArrayList<Patient>();
 		entete = new String[] { "Identifiant", "Nom",
-				"Priorité", "Date / Heure d'arrivée","Nom et prénom du propriotaire"  };
+				"Prioritï¿½", "Date / Heure d'arrivï¿½e","Nom et prï¿½nom du propriotaire"  };
+		
+		Proprietaire proprioTest = new Proprietaire("Zekinan","Limonsso","","");
+		Patient patientTest = new Patient("Milou","2 ans","FÃ©lin","Grippe",2,proprioTest);
+		
+		Proprietaire proprioTest2 = new Proprietaire("Serge","Limonsso","","");
+		Patient patientTest2 = new Patient("Bobi","4 ans","Canin","Grippe",4,proprioTest2);
+		
+		Proprietaire proprioTest3 = new Proprietaire("aminata","jeanne","","");
+		Patient patientTest3 = new Patient("michel","3 ans","chevre","fievre",2,proprioTest3);
+		
+		Proprietaire proprioTest4 = new Proprietaire("Serge","Limonsso","","");
+		Patient patientTest4 = new Patient("jacques","5 ans","Canin","mal dentaire",4,proprioTest4);
+		
+		this.Model.placerPatient(patientTest);
+		this.Model.placerPatient(patientTest2);
+		this.Model.placerPatient(patientTest3);
+		this.Model.placerPatient(patientTest4);
+
+
+
+		
+		
 	}
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		//vide la liste de resultat
-		Resultat.clear();
-		// Obtenir la source de l'événement.
+		
+		if (Resultat!= null && !Resultat.isEmpty()) {
+			Resultat.removeAll(Resultat);
+		}
+		// Obtenir la source de l'ï¿½vï¿½nement.
         Object source = event.getSource();
         
         //event radio bouton Tous
@@ -43,7 +69,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
         	if(!FillData())
         	{
         		JOptionPane.showMessageDialog(this.uneVue,
-    					"Aucun patient n'existe dans le système",
+    					"Aucun patient n'existe dans le systï¿½me",
     					"SPT- Information",
     					JOptionPane.INFORMATION_MESSAGE);
         	}
@@ -70,12 +96,78 @@ public class ControleurRecherchePatient extends ControleurPatient {
 	        		}
 	        	}
 	        	if(this.uneVue.getRdbtnEgalepiorite().isSelected()){
+	        		int priorite;
+	        		
+	        		try{
+	        			priorite = Integer.parseInt(valeurRecherche);
+		        		
+		        		Resultat = this.Model.rechercheParPriorite(priorite, 0);
+		        		
+		        		if(!FillData())
+		            	{
+		            		JOptionPane.showMessageDialog(this.uneVue,
+		        					"Aucun patient n'a la prioritÃ© " + priorite + " dans le systï¿½me ",
+		        					"SPT- Information",
+		        					JOptionPane.INFORMATION_MESSAGE);
+		            	}
+	        		} catch (NumberFormatException ex ) { 
+	        			
+	        			JOptionPane.showMessageDialog(this.uneVue,
+	        					"Rentrez une valeur numÃ©rique s'il vous plait ",
+	        					"SPT- Information",
+	        					JOptionPane.ERROR_MESSAGE);
+	        		}
+	        		 
+	        		
+	        		
 	        	}
 	        	if(this.uneVue.getRdbtnInfpiorite().isSelected()){
-		
+	        		
+	        		int priorite;
+	        		
+	        		try{
+	        			priorite = Integer.parseInt(valeurRecherche);
+		        		
+		        		Resultat = this.Model.rechercheParPriorite(priorite, -1);
+		        		
+		        		if(!FillData())
+		            	{
+		            		JOptionPane.showMessageDialog(this.uneVue,
+		        					"Aucun patient n'a une prioritÃ© infÃ©rieure Ã  " + priorite + " dans le systï¿½me ",
+		        					"SPT- Information",
+		        					JOptionPane.INFORMATION_MESSAGE);
+		            	}
+	        		} catch (NumberFormatException ex ) { 
+	        			
+	        			JOptionPane.showMessageDialog(this.uneVue,
+	        					"Rentrez une valeur numÃ©rique s'il vous plait ",
+	        					"SPT- Information",
+	        					JOptionPane.ERROR_MESSAGE);
+	        		}
 	        	}
 	        	if(this.uneVue.getRdbtnSuppiorite().isSelected()){
 	        		
+	        		int priorite;
+	        		
+	        		try{
+	        			priorite = Integer.parseInt(valeurRecherche);
+		        		
+		        		Resultat = this.Model.rechercheParPriorite(priorite, 1);
+		        		
+		        		if(!FillData())
+		            	{
+		            		JOptionPane.showMessageDialog(this.uneVue,
+		        					"Aucun patient n'a une prioritÃ© supÃ©rieure Ã  " + priorite + " dans le systï¿½me ",
+		        					"SPT- Information",
+		        					JOptionPane.INFORMATION_MESSAGE);
+		            	}
+	        		} catch (NumberFormatException ex ) { 
+	        			
+	        			JOptionPane.showMessageDialog(this.uneVue,
+	        					"Rentrez une valeur numÃ©rique s'il vous plait ",
+	        					"SPT- Information",
+	        					JOptionPane.ERROR_MESSAGE);
+	        		}
 	        	}
         	}
         	else
@@ -116,7 +208,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
         }
 	}
 	/**
-	 * Permet de remplire le objet data du JTable de FenetreRecherchePatients
+	 * Permet de remplire l'objet data du JTable de FenetreRecherchePatients
 	 * avec le resultat obtenu du model
 	 * @return vrai si on a des resultats
 	 */
@@ -125,7 +217,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
 		if(Resultat!=null && !Resultat.isEmpty())
     	{
         	data = new Object[Resultat.size()][5];
-        	int i =0;
+        	int i = 0;
         	for(Patient patient : Resultat){
         		if(patient !=null)
 	        	{
@@ -145,6 +237,10 @@ public class ControleurRecherchePatient extends ControleurPatient {
         		bReturn=true;
         	}
         	
+    	}
+		if (bReturn == false) {
+    		this.uneVue.Value = null;
+    		this.uneVue.refresh();
     	}
 		return bReturn;
 	}

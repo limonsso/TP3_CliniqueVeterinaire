@@ -28,9 +28,7 @@ public class GestionUrgenceCliniqueVeterinaire {
 	 */
 	public GestionUrgenceCliniqueVeterinaire() {
 		listePatients = new FileAttenteImpl<Patient>();
-		Proprietaire proprioTest = new Proprietaire("Zekinan","Limonsso","","");
-		Patient patientTest = new Patient("Milou","2 ans","Félin","Grippe",2,proprioTest);
-		placerPatient(patientTest);
+		
 	}
 
 	
@@ -157,7 +155,7 @@ public class GestionUrgenceCliniqueVeterinaire {
 			
 			patient = itPatient.next();
 			
-			if (patient.getIdentifiant() == identifiant) {
+			if (patient.getIdentifiant().equals(identifiant)) {
 				
 				bTrouve = true;
 			}

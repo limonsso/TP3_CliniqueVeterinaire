@@ -79,15 +79,15 @@ public class Patient implements OrdonnableParPrioriteEtDateHeure {
 			
 			if (nom.length() == 1) {
 				
-				identifiant = nom.trim().toUpperCase() + "XX" + nbSequentiel + " ";
+				identifiant = nom.trim().toUpperCase() + "XX" + nbSequentiel + "";
 				
 			} else if (nom.length() ==2) {
 				
-				identifiant = nom.trim().toUpperCase() + "X" + nbSequentiel + " ";
+				identifiant = nom.trim().toUpperCase() + "X" + nbSequentiel + "";
 				
 			} 
 			else
-				identifiant = nom.trim().toUpperCase() + nbSequentiel + " ";
+				identifiant = nom.trim().substring(0,3).toUpperCase() + nbSequentiel + "";
 			
 		}
 		
