@@ -57,14 +57,15 @@ public class ControleurRecherchePatient extends ControleurPatient {
 	public void actionPerformed(ActionEvent event) {
 		//vide la liste de resultat
 		
-		if (Resultat!= null && !Resultat.isEmpty()) {
-			Resultat.removeAll(Resultat);
-		}
+		
 		// Obtenir la source de l'ï¿½vï¿½nement.
         Object source = event.getSource();
         
         //event radio bouton Tous
         if(source == this.uneVue.getRdbtnTous()){
+        	if (Resultat!= null && !Resultat.isEmpty()) {
+    			Resultat.removeAll(Resultat);
+    		}
         	Resultat = this.Model.rechercheTousLesPatients();
         	if(!FillData())
         	{
@@ -74,7 +75,11 @@ public class ControleurRecherchePatient extends ControleurPatient {
     					JOptionPane.INFORMATION_MESSAGE);
         	}
         }
+        //Bouton Rechercher
         if(source == this.uneVue.getBtnRechercher()){
+        	if (Resultat!= null && !Resultat.isEmpty()) {
+    			Resultat.removeAll(Resultat);
+    		}
         	String valeurRecherche = uneVue.getTfRecherche().getText().trim().toUpperCase();
         	
         	if(!uneVue.getTfRecherche().getText().isEmpty())
@@ -95,6 +100,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
 	        			uneVue.refresh();
 	        		}
 	        	}
+	        	
 	        	if(this.uneVue.getRdbtnEgalepiorite().isSelected()){
 	        		int priorite;
 	        		
@@ -145,6 +151,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
 	        					JOptionPane.ERROR_MESSAGE);
 	        		}
 	        	}
+	        	//radio bouton priorité superieur a
 	        	if(this.uneVue.getRdbtnSuppiorite().isSelected()){
 	        		
 	        		int priorite;
@@ -192,6 +199,39 @@ public class ControleurRecherchePatient extends ControleurPatient {
         if(source == this.uneVue.getBtnModifier())
         {
         	DialogPatientEditer EditerPatient = new DialogPatientEditer(this.uneVue);
+        	
+        	String Id = this.uneVue.getTablePatients().getValueAt(uneVue.getTablePatients().getSelectedRow(), 0).toString();
+        	Patient unPatient = this.Model.rechercherParIndentifiant(Id); 
+        	switch(unPatient.getEspece()){
+        	case "Félin":
+        		EditerPatient.getRdbtnFelin().setSelected(true);
+        		break;
+        	case "Canin":
+        		EditerPatient.getRdbtnCanin().setSelected(true);
+        		break;	
+        		
+        	case "Autre":
+        		EditerPatient.getRdbtnAutre().setSelected(true);
+        		break;	
+        	}
+        	EditerPatient.gettFId().setText(Id);
+        	EditerPatient.gettFNom().setText(unPatient.getNom());
+        	EditerPatient.gettFAge().setText(unPatient.getAge());
+        	EditerPatient.gettFRaison().setText(unPatient.getRaisonUrgence());
+        	for (int i = 0; i < EditerPatient.getCboPriorite().getItemCount(); i++)
+            {
+                if (EditerPatient.getCboPriorite().getItemAt(i)==unPatient.obtenirPriorite())
+                {
+                	EditerPatient.getCboPriorite().setSelectedIndex(i);
+                    break;
+                }
+            }
+        	SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        	EditerPatient.gettFDate().setText(formatDate.format(unPatient.obtenirDateHeureCreation().getTime()));
+        	EditerPatient.gettFNomP().setText(unPatient.getProprietaire().getNom());
+        	EditerPatient.gettFPrenomP().setText(unPatient.getProprietaire().getPrenom());
+        	EditerPatient.gettFAdresse().setText(unPatient.getProprietaire().getAdresse());
+        	EditerPatient.gettFTel().setText(unPatient.getProprietaire().getTelephone());
         	ControleurDialogP = new ControleurDialogPatient(EditerPatient,this.Model);
         	EditerPatient.setControleurDialogPatient(ControleurDialogP);
         	EditerPatient.setModal(true);
@@ -222,7 +262,26 @@ public class ControleurRecherchePatient extends ControleurPatient {
         	AfficherPatient.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         	AfficherPatient.setVisible(true);
         }
-      //Bouton "Fermer"
+        //Bouton "Suppimer"
+        if(source == this.uneVue.getBtnSupprimer())
+        {
+        	int index = uneVue.getTablePatients().getSelectedRow();
+        	// Question avec les boutons de réponse Oui et Non
+        	int reponse = JOptionPane.showConfirmDialog(null,
+    				        "Voulez-vous supprimer le patient "+this.uneVue.getTablePatients()
+    				        .getValueAt(index, 0).toString(),
+    				        "SPT- Avertissement",
+    				        JOptionPane.YES_NO_OPTION);
+        	Resultat.remove(index);
+        	FillData();
+        	if(reponse ==JOptionPane.YES_OPTION)
+        	{
+        		String Id = this.uneVue.getTablePatients().getValueAt(uneVue.getTablePatients()
+        				.getSelectedRow(), 0).toString();
+        		this.Model.enleverPatient(this.Model.rechercherParIndentifiant(Id));
+        	}
+        }
+        //Bouton "Fermer"
         if(source == this.uneVue.getBtnFermer())
         {
         	this.uneVue.dispose();

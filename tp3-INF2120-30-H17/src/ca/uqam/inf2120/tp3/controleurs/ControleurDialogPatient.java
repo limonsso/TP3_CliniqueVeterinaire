@@ -76,7 +76,7 @@ public class ControleurDialogPatient extends ControleurPatient {
 								"Le patient a été ajouté",
 								"SPT- Information",
 								JOptionPane.INFORMATION_MESSAGE);
-				uneVue.Refresh();
+				uneVue.dispose();
 			}
 			else
 				// Message d'erreur avec le bouton OK
@@ -92,7 +92,7 @@ public class ControleurDialogPatient extends ControleurPatient {
 		}
 		if(source == uneVue.getBtnAnnuler())
 		{
-			uneVue.Refresh();
+			uneVue.dispose();
 		}
 	}
 }
