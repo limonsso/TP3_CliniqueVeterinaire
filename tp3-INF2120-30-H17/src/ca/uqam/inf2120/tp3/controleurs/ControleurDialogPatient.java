@@ -85,7 +85,60 @@ public class ControleurDialogPatient extends ControleurPatient {
 					    		"SPT- Erreur",
 					    		JOptionPane.ERROR_MESSAGE);
 		}
-		
+		if(source == uneVue.getBtnModifier()){
+			Patient patient ;
+			boolean bValide =true;
+			String espesce="";
+			if(uneVue.getRdbtnFelin().isSelected()){
+				espesce="Felin";
+			}
+			if(uneVue.getRdbtnCanin().isSelected()){
+				espesce="Canin";
+			}
+			if(uneVue.getRdbtnAutre().isSelected()){
+				espesce="Autre";
+			}
+			if(uneVue.gettFAge().getText().isEmpty()){
+				bValide =false;
+			}
+			if(uneVue.gettFRaison().getText().isEmpty()){
+				bValide =false;
+			}
+			if(uneVue.gettFNomP().getText().isEmpty()){
+				bValide =false;
+			}
+			if(uneVue.gettFPrenomP().getText().isEmpty()){
+				bValide =false;
+			}
+			if(uneVue.gettFAdresse().getText().isEmpty()){
+				bValide =false;
+			}
+			if(uneVue.gettFTel().getText().isEmpty()){
+				bValide =false;
+			}
+			if(bValide){
+				patient = this.Model.rechercherParIndentifiant(uneVue.gettFId().getText());
+				patient.setAge(uneVue.gettFAge().getText());
+				patient.setEspece(espesce);
+				patient.setRaisonUrgence(uneVue.gettFAge().getText());
+				patient.getProprietaire().setNom(uneVue.gettFNomP().getText());
+				patient.getProprietaire().setPrenom(uneVue.gettFPrenomP().getText());
+				patient.getProprietaire().setAdresse(uneVue.gettFAdresse().getText());
+				patient.getProprietaire().setTelephone(uneVue.gettFTel().getText());
+				this.Model.modifierPatient(patient);
+				JOptionPane.showMessageDialog(this.uneVue,
+						"Le patient a été modifié",
+						"SPT- Information",
+						JOptionPane.INFORMATION_MESSAGE);
+				this.uneVue.dispose();
+			}
+			else
+				// Message d'erreur avec le bouton OK
+				JOptionPane.showMessageDialog(null,
+					    		"Tous les champs sont obligatoires !!!",
+					    		"SPT- Erreur",
+					    		JOptionPane.ERROR_MESSAGE);
+		}
 		if(source == uneVue.getBtnFermer())
 		{
 			this.uneVue.dispose();
