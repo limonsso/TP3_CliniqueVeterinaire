@@ -73,7 +73,7 @@ public class DialogPatientEditer extends DialogPatient {
 
 		// creation du panel du centre
 		JPanel panelCenter = new JPanel();
-		panelCenter.setBorder(new TitledBorder(null, "Informations g�n�rale du patient", TitledBorder.LEFT,
+		panelCenter.setBorder(new TitledBorder(null, "Informations générales du patient", TitledBorder.LEFT,
 				TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelCenter.setPreferredSize(new Dimension(PANEL_WIDTH, 240));
 		contentPane.add(panelCenter);
@@ -100,7 +100,7 @@ public class DialogPatientEditer extends DialogPatient {
 		tFNom.setEditable(false);
 
 		// creation du label de l'age du patient
-		JLabel lblAge = new JLabel("�ge :");
+		JLabel lblAge = new JLabel("Age :");
 		panelCenter.add(lblAge);
 
 		// creation du champ de texte d l'age du patient
@@ -110,8 +110,8 @@ public class DialogPatientEditer extends DialogPatient {
 		tFAge.setColumns(10);
 
 		// creation du label de la raison d'urgence du patient
-		JLabel lblNbCours = new JLabel("Raison d'urgence :");
-		panelCenter.add(lblNbCours);
+		JLabel lblNbRaisonUrgence = new JLabel("Raison d'urgence :");
+		panelCenter.add(lblNbRaisonUrgence);
 
 		// creation du champ de texte de la raison d'urgence du patient
 		tFRaison = new JTextArea();
@@ -120,7 +120,7 @@ public class DialogPatientEditer extends DialogPatient {
 		tFRaison.setColumns(10);
 
 		// creation du label de la priorite du patient
-		JLabel lblPriorite = new JLabel("Priorit� :");
+		JLabel lblPriorite = new JLabel("Priorité :");
 		panelCenter.add(lblPriorite);
 
 		// creation du champ de texte de la prorite du patient
@@ -131,7 +131,7 @@ public class DialogPatientEditer extends DialogPatient {
 		cboPriorite.setEditable(false);
 
 		// creation du label de la date du creation du patient
-		JLabel lblDate = new JLabel("Date / Heure d'arriv�e :");
+		JLabel lblDate = new JLabel("Date / Heure d'arrivée :");
 		panelCenter.add(lblDate);
 
 		// creation du champ de texte de la date d'arrivee du patient

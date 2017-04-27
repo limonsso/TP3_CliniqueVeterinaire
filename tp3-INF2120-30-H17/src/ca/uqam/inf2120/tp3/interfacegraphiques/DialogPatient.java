@@ -21,7 +21,7 @@ import javax.swing.border.TitledBorder;
 import ca.uqam.inf2120.tp3.controleurs.ControleurDialogPatient;
 
 /**
- * DialogEtudiantAjout : Fen�tre (JDialog) d'ajout d'un �tudiant.
+ * DialogEtudiantAjout : Fenetre (JDialog) d'ajout d'un étudiant.
  * 
  * @author Ismael Doukoure
  * @version Avril 2014
@@ -158,7 +158,7 @@ public abstract class DialogPatient extends JDialog {
 
 		// creation du panel du milieu
 		JPanel panelCenter = new JPanel();
-		panelCenter.setBorder(new TitledBorder(null, "Informations du propri�taire", TitledBorder.LEFT,
+		panelCenter.setBorder(new TitledBorder(null, "Informations du propriétaire", TitledBorder.LEFT,
 				TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelCenter.setPreferredSize(new Dimension(PANEL_WIDTH, 170));
 		contentPane.add(panelCenter);
@@ -174,7 +174,7 @@ public abstract class DialogPatient extends JDialog {
 		tFNomP.setColumns(10);
 
 		// creation du label du prenom et ajout au panel du centre
-		JLabel lblPrenom = new JLabel("Pr�nom:");
+		JLabel lblPrenom = new JLabel("Prénom:");
 		panelCenter.add(lblPrenom);
 
 		// creation champ de texte du nom et ajout au panel du centre
@@ -183,7 +183,7 @@ public abstract class DialogPatient extends JDialog {
 		tFPrenomP.setColumns(10);
 
 		// creation du label du telephone et ajout au panel du centre
-		JLabel lblTel = new JLabel("T�l�phone :");
+		JLabel lblTel = new JLabel("Téléphone :");
 		panelCenter.add(lblTel);
 
 		// creation du champ de texte du telephone et ajout au panel du centre

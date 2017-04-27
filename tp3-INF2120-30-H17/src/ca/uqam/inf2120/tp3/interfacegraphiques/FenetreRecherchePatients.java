@@ -25,8 +25,8 @@ import ca.uqam.inf2120.tp3.controleurs.ControleurPatient;
 import ca.uqam.inf2120.tp3.controleurs.ControleurRecherchePatient;
 
 /**
- * FenetreRechercheEtudiants : Fenêtre (JFrame) de recherche d’étudiant avec des
- * étudiants dans la liste .
+ * FenetreRechercheEtudiants : Fenetre (JFrame) de recherche dï¿½ï¿½tudiant avec des
+ * etudiants dans la liste .
  * 
  * @author Ismael Doukoure
  * @version Avril 2014
@@ -70,7 +70,7 @@ public class FenetreRecherchePatients extends JFrame {
 	 */
 	public FenetreRecherchePatients() {
 
-		setTitle("CLinique vétérinaire - Soins Pour Tous (SPT)");
+		setTitle("CLinique vï¿½tï¿½rinaire - Soins Pour Tous (SPT)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 605, 370);
 		contentPane = new JPanel();
@@ -111,13 +111,13 @@ public class FenetreRecherchePatients extends JFrame {
 		rdbtnIdentifiant.setSelected(true);
 		panelHaut.add(rdbtnIdentifiant);
 		
-		rdbtnInfpiorite = new JRadioButton("< à la priorité");		
+		rdbtnInfpiorite = new JRadioButton("< ï¿½ la prioritï¿½");		
 		panelHaut.add(rdbtnInfpiorite);
 		
-		rdbtnEgalepiorite = new JRadioButton("= à la priorité donnée");		
+		rdbtnEgalepiorite = new JRadioButton("= ï¿½ la prioritï¿½ donnï¿½e");		
 		panelHaut.add(rdbtnEgalepiorite);
 		
-		rdbtnSuppiorite = new JRadioButton("> à la priorité");		
+		rdbtnSuppiorite = new JRadioButton("> ï¿½ la prioritï¿½");		
 		panelHaut.add(rdbtnSuppiorite);
 
 		rdbtnTous = new JRadioButton("Tous les patients");
@@ -185,9 +185,9 @@ public class FenetreRecherchePatients extends JFrame {
 	}
 	@SuppressWarnings("serial")
 	/**
-	 * Créer le modèle avec les colonnes non éditables pour initialiser le model du Jtable tablePatients.
+	 * Crï¿½er le modï¿½le avec les colonnes non ï¿½ditables pour initialiser le model du Jtable tablePatients.
 	 * 
-	 * @return LE modèle de la table.
+	 * @return LE modï¿½le de la table.
 	 */
 	private DefaultTableModel creerModeleAvecColonnesNonEditables() {
 		
@@ -196,7 +196,7 @@ public class FenetreRecherchePatients extends JFrame {
 						{ "", "", "","","" }
 						},
 				new String[] { "Identifiant", "Nom",
-						"Priorité", "Date / Heure d'arrivée","Nom et prénom du propriotaire"  }) {
+						"Prioritï¿½", "Date / Heure d'arrivï¿½e","Nom et prï¿½nom du propriotaire"  }) {
 			
 			boolean[] columnEditables = new boolean[] { false, false, false, false,false };
 
