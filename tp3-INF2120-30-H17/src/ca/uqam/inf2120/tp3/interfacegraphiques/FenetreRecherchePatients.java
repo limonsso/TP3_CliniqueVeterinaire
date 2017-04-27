@@ -46,13 +46,13 @@ public class FenetreRecherchePatients extends JFrame {
 	private JRadioButton rdbtnSuppiorite;
 	private JRadioButton rdbtnTous;
 	private JButton btnRechercher;
-	private JButton btnModifier ;
-	private JButton btnAfficher ;
-	private JButton btnSupprimer ;
-	private JButton btnFermer ;
-	private JButton btnAjouter ;
+	private JButton btnModifier;
+	private JButton btnAfficher;
+	private JButton btnSupprimer;
+	private JButton btnFermer;
+	private JButton btnAjouter;
 	public DefaultTableModel Value;
-	
+
 	private JScrollPane scrollPane;
 
 	/**
@@ -66,11 +66,11 @@ public class FenetreRecherchePatients extends JFrame {
 	}
 
 	/**
-	 * Constructeur.
+	 * permet de construire la fenetre principale de recherche
 	 */
 	public FenetreRecherchePatients() {
 
-		setTitle("CLinique v�t�rinaire - Soins Pour Tous (SPT)");
+		setTitle("CLinique vétérinaire - Soins Pour Tous (SPT)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 605, 370);
 		contentPane = new JPanel();
@@ -78,13 +78,13 @@ public class FenetreRecherchePatients extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(4, 1, 0, 0));
 		Value = creerModeleAvecColonnesNonEditables();
-		
+
 		initPanelTop();
 		initPanelCenter();
 		initTableResulat();
 		initPanelBouton();
 		controleurPatient = new ControleurRecherchePatient(this);
-		
+
 		btnRechercher.addActionListener(controleurPatient);
 		btnAjouter.addActionListener(controleurPatient);
 		btnAfficher.addActionListener(controleurPatient);
@@ -97,32 +97,37 @@ public class FenetreRecherchePatients extends JFrame {
 		rdbtnSuppiorite.addActionListener(controleurPatient);
 		rdbtnTous.addActionListener(controleurPatient);
 	}
+
 	/**
 	 * Initialisation du panel du haut et de ses composantes
 	 */
-	public void initPanelTop(){
+	public void initPanelTop() {
+
+		// creation du panel du haut
 		JPanel panelHaut = new JPanel();
-		panelHaut.setBorder(new TitledBorder(null, "Type de recherche ",
-				TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelHaut.setBorder(new TitledBorder(null, "Type de recherche ", TitledBorder.LEFT, TitledBorder.TOP, null,
+				new Color(0, 0, 0)));
 		contentPane.add(panelHaut);
 		panelHaut.setLayout(new GridLayout(0, 2, 5, 5));
-		
+
+		// creation des bouton radio
 		rdbtnIdentifiant = new JRadioButton("Identifiant");
 		rdbtnIdentifiant.setSelected(true);
 		panelHaut.add(rdbtnIdentifiant);
-		
-		rdbtnInfpiorite = new JRadioButton("< � la priorit�");		
+
+		rdbtnInfpiorite = new JRadioButton("< à la priorité");
 		panelHaut.add(rdbtnInfpiorite);
-		
-		rdbtnEgalepiorite = new JRadioButton("= � la priorit� donn�e");		
+
+		rdbtnEgalepiorite = new JRadioButton("= à la priorité donnée");
 		panelHaut.add(rdbtnEgalepiorite);
-		
-		rdbtnSuppiorite = new JRadioButton("> � la priorit�");		
+
+		rdbtnSuppiorite = new JRadioButton("> à la priorité");
 		panelHaut.add(rdbtnSuppiorite);
 
 		rdbtnTous = new JRadioButton("Tous les patients");
 		panelHaut.add(rdbtnTous);
 
+		// creation du bouton group
 		ButtonGroup buttonGroup = new ButtonGroup();
 		buttonGroup.add(rdbtnIdentifiant);
 		buttonGroup.add(rdbtnInfpiorite);
@@ -130,36 +135,43 @@ public class FenetreRecherchePatients extends JFrame {
 		buttonGroup.add(rdbtnSuppiorite);
 		buttonGroup.add(rdbtnTous);
 	}
+
 	/**
 	 * Initialisation du panel du centre et de ses composantes
 	 */
-	public void initPanelCenter(){
-		
+	public void initPanelCenter() {
+
+		// creation du panel du milieu
 		JPanel panelCenter = new JPanel();
 		panelCenter.setBorder(BorderFactory.createTitledBorder(""));
 		FlowLayout flowLayout_1 = (FlowLayout) panelCenter.getLayout();
 		flowLayout_1.setVgap(15);
 		contentPane.add(panelCenter);
 
+		// creation du champ de texte de recherche
 		tfRecherche = new JTextField();
 		panelCenter.add(tfRecherche);
 		tfRecherche.setColumns(25);
 
+		// creation du bouton de recherche
 		btnRechercher = new JButton("Rechercher");
 		panelCenter.add(btnRechercher);
 
-		 
 	}
-	
+
 	/**
-	 * Initialisation du panel de la table de Resulats de recherche et de ses composantes
+	 * Initialisation du panel de la table de Resulats de recherche et de ses
+	 * composantes
 	 */
-	public void initTableResulat(){
+	public void initTableResulat() {
+
+		// creation du panel qui devrait contenir la table de patients creés
 		panelTable = new JPanel();
 		panelTable.setPreferredSize(new Dimension(10, 15));
 		panelTable.setOpaque(true);
 		contentPane.add(panelTable);
-		
+
+		// creation du Jtable qui devrait contenir les patients creés
 		tablePatients = new JTable();
 		tablePatients.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tablePatients.setFillsViewportHeight(true);
@@ -174,48 +186,52 @@ public class FenetreRecherchePatients extends JFrame {
 		tablePatients.getColumnModel().getColumn(2).setPreferredWidth(10);
 		tablePatients.getColumnModel().getColumn(3).setResizable(false);
 		tablePatients.getColumnModel().getColumn(3).setPreferredWidth(50);
-		
+
 		JTableHeader header = tablePatients.getTableHeader();
 		header.setFont(new Font("Dialog", Font.BOLD, 12));
-		
+
+		// creation du panel deroulant
 		scrollPane = new JScrollPane(tablePatients);
 		scrollPane.setPreferredSize(new Dimension(580, 70));
 		panelTable.add(scrollPane);
 		scrollPane.setVisible(false);
+
 	}
+
 	@SuppressWarnings("serial")
 	/**
-	 * Cr�er le mod�le avec les colonnes non �ditables pour initialiser le model du Jtable tablePatients.
+	 * Créer le modèle avec les colonnes non éditables pour initialiser le model
+	 * du Jtable tablePatients.
 	 * 
-	 * @return LE mod�le de la table.
+	 * @return LE modèle de la table.
 	 */
 	private DefaultTableModel creerModeleAvecColonnesNonEditables() {
-		
-		return new DefaultTableModel(
-				new Object[][] {
-						{ "", "", "","","" }
-						},
-				new String[] { "Identifiant", "Nom",
-						"Priorit�", "Date / Heure d'arriv�e","Nom et pr�nom du propriotaire"  }) {
-			
-			boolean[] columnEditables = new boolean[] { false, false, false, false,false };
+
+		return new DefaultTableModel(new Object[][] { { "", "", "", "", "" } }, new String[] { "Identifiant", "Nom",
+				"Priorité", "Date / Heure d'arrivée", "Nom et prénom du propriétaire" }) {
+
+			boolean[] columnEditables = new boolean[] { false, false, false, false, false };
 
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
 		};
 	}
+
 	/**
 	 * 
 	 * Initialisation du panel des boutons et de ses composantes
 	 */
-	public void initPanelBouton(){
+	public void initPanelBouton() {
+
+		// creation du panel de boutons
 		JPanel panelBoutons = new JPanel();
 		FlowLayout fl_panelBoutons = (FlowLayout) panelBoutons.getLayout();
 		fl_panelBoutons.setVgap(20);
 		fl_panelBoutons.setAlignment(FlowLayout.RIGHT);
 		contentPane.add(panelBoutons);
 
+		// creation des boutons Ajouter, modifier, supprimer et afficher
 		btnAjouter = new JButton("Ajouter");
 		panelBoutons.add(btnAjouter);
 
@@ -234,27 +250,30 @@ public class FenetreRecherchePatients extends JFrame {
 		btnFermer = new JButton("Fermer");
 		panelBoutons.add(btnFermer);
 	}
-	
+
 	// Rafraichir la vue
 	public void refresh() {
-		if(Value!=null){
-		this.tablePatients.setModel(Value);
-		tablePatients.setRowSelectionInterval(0, 0);
-		tablePatients.getColumnModel().getColumn(0).setPreferredWidth(5);
-		tablePatients.getColumnModel().getColumn(1).setResizable(false);
-		tablePatients.getColumnModel().getColumn(1).setPreferredWidth(8);
-		tablePatients.getColumnModel().getColumn(2).setResizable(false);
-		tablePatients.getColumnModel().getColumn(2).setPreferredWidth(10);
-		tablePatients.getColumnModel().getColumn(3).setResizable(false);
-		tablePatients.getColumnModel().getColumn(3).setPreferredWidth(50);
-		btnModifier.setEnabled(true);
-		btnSupprimer.setEnabled(true);
-		btnAfficher.setEnabled(true);
-		scrollPane.setVisible(true);
-		panelTable.validate();
-		panelTable.repaint();
-		
-		}else{
+
+		if (Value != null) {
+
+			this.tablePatients.setModel(Value);
+			tablePatients.setRowSelectionInterval(0, 0);
+			tablePatients.getColumnModel().getColumn(0).setPreferredWidth(5);
+			tablePatients.getColumnModel().getColumn(1).setResizable(false);
+			tablePatients.getColumnModel().getColumn(1).setPreferredWidth(8);
+			tablePatients.getColumnModel().getColumn(2).setResizable(false);
+			tablePatients.getColumnModel().getColumn(2).setPreferredWidth(10);
+			tablePatients.getColumnModel().getColumn(3).setResizable(false);
+			tablePatients.getColumnModel().getColumn(3).setPreferredWidth(50);
+			btnModifier.setEnabled(true);
+			btnSupprimer.setEnabled(true);
+			btnAfficher.setEnabled(true);
+			scrollPane.setVisible(true);
+			panelTable.validate();
+			panelTable.repaint();
+
+		} else {
+
 			Value = creerModeleAvecColonnesNonEditables();
 			scrollPane.setVisible(false);
 			btnModifier.setEnabled(false);
@@ -267,7 +286,10 @@ public class FenetreRecherchePatients extends JFrame {
 		}
 	}
 
-
+	/**
+	 * 
+	 * @return rdbtnIdentifiant
+	 */
 	public JRadioButton getRdbtnIdentifiant() {
 		return rdbtnIdentifiant;
 	}
@@ -279,7 +301,7 @@ public class FenetreRecherchePatients extends JFrame {
 	public JRadioButton getRdbtnEgalepiorite() {
 		return rdbtnEgalepiorite;
 	}
-	
+
 	public JRadioButton getRdbtnSuppiorite() {
 		return rdbtnSuppiorite;
 	}
@@ -287,11 +309,11 @@ public class FenetreRecherchePatients extends JFrame {
 	public JRadioButton getRdbtnTous() {
 		return rdbtnTous;
 	}
-	
+
 	public JButton getBtnAjouter() {
 		return btnAjouter;
 	}
-	
+
 	public JButton getBtnRechercher() {
 		return btnRechercher;
 	}
@@ -319,6 +341,5 @@ public class FenetreRecherchePatients extends JFrame {
 	public JTable getTablePatients() {
 		return tablePatients;
 	}
-
 
 }
