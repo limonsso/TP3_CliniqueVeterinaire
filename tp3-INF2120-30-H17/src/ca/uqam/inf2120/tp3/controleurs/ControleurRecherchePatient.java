@@ -272,13 +272,14 @@ public class ControleurRecherchePatient extends ControleurPatient {
     				        .getValueAt(index, 0).toString(),
     				        "SPT- Avertissement",
     				        JOptionPane.YES_NO_OPTION);
-        	Resultat.remove(index);
-        	FillData();
+        	
         	if(reponse ==JOptionPane.YES_OPTION)
         	{
         		String Id = this.uneVue.getTablePatients().getValueAt(uneVue.getTablePatients()
         				.getSelectedRow(), 0).toString();
         		this.Model.enleverPatient(this.Model.rechercherParIndentifiant(Id));
+        		Resultat.remove(index);
+            	FillData();
         	}
         }
         //Bouton "Fermer"
