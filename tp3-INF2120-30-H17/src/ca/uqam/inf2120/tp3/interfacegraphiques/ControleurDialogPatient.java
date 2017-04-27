@@ -1,10 +1,9 @@
-package ca.uqam.inf2120.tp3.controleurs;
+package ca.uqam.inf2120.tp3.interfacegraphiques;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
-import ca.uqam.inf2120.tp3.interfacegraphiques.DialogPatient;
 import ca.uqam.inf2120.tp3.modele.GestionUrgenceCliniqueVeterinaire;
 import ca.uqam.inf2120.tp3.modele.Patient;
 import ca.uqam.inf2120.tp3.modele.Proprietaire;
@@ -22,7 +21,7 @@ public class ControleurDialogPatient extends ControleurPatient {
 	}
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		// Obtenir la source de l'événement.
+		// Obtenir la source de l'Ã©vÃ¨nement.
 		Object source = event.getSource();
 		
 		// event Bouton Ajouter
@@ -68,12 +67,12 @@ public class ControleurDialogPatient extends ControleurPatient {
 				Proprietaire proprio = new Proprietaire(uneVue.gettFNomP().getText(),uneVue.gettFPrenomP().getText(),
 						uneVue.gettFAdresse().getText(),uneVue.gettFTel().getText());
 				
-				patient = new Patient(uneVue.gettFNom().getText(),uneVue.gettFAge().getText(),uneVue.gettFRaison().getText()
-						,espesce,(int)uneVue.getCboPriorite().getSelectedItem(),proprio);
+				patient = new Patient(uneVue.gettFNom().getText(),uneVue.gettFAge().getText(),espesce,uneVue.gettFRaison().getText()
+						,(int)uneVue.getCboPriorite().getSelectedItem(),proprio);
 				Model.placerPatient(patient);
 				// Message d'information avec le bouton OK
 				JOptionPane.showMessageDialog(this.uneVue,
-								"Le patient a été ajouté",
+								"Le patient a Ã©tÃ© ajoutÃ©",
 								"SPT- Information",
 								JOptionPane.INFORMATION_MESSAGE);
 				uneVue.dispose();
@@ -128,7 +127,7 @@ public class ControleurDialogPatient extends ControleurPatient {
 				patient.getProprietaire().setTelephone(uneVue.gettFTel().getText());
 				this.Model.modifierPatient(patient);
 				JOptionPane.showMessageDialog(this.uneVue,
-						"Le patient a été modifié",
+						"Le patient a Ã©tÃ© modifiÃ©",
 						"SPT- Information",
 						JOptionPane.INFORMATION_MESSAGE);
 				this.uneVue.dispose();

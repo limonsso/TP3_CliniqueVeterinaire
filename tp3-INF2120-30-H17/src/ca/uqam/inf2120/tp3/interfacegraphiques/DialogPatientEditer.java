@@ -16,13 +16,19 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-import ca.uqam.inf2120.tp3.controleurs.ControleurDialogPatient;
-
+/**
+ * UQAM - Hiver 2017 - INF2120 - Groupe 30 - TP3
+ * 
+ * Classe DialogPatientEditer : permet de modifier les informations d'un patient
+ * (nom et lèidentifiant ne sont pas modifiables)
+ * 
+ * 
+ * @author Doumo Doumo Serges=Michel - DOUS20078401 et Ezeckiel Gnepa
+ *         -GNEP09110902
+ * @version 5 avril 2017
+ */
 public class DialogPatientEditer extends DialogPatient {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) {

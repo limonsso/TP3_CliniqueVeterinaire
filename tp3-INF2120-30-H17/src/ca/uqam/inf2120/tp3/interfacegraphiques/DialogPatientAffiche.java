@@ -14,8 +14,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-import ca.uqam.inf2120.tp3.controleurs.ControleurDialogPatient;
-
 /**
  * UQAM - Hiver 2017 - INF2120 - Groupe 30 - TP3
  * 
@@ -23,7 +21,8 @@ import ca.uqam.inf2120.tp3.controleurs.ControleurDialogPatient;
  * (nom, age,etc...)
  * 
  * 
- * @author Doumo Doumo Serges=Michel - DOUS20078401 et Ezeckiel Gnepa -
+ * @author Doumo Doumo Serges=Michel - DOUS20078401 et Ezeckiel Gnepa
+ *         -GNEP09110902
  * @version 5 avril 2017
  */
 public class DialogPatientAffiche extends DialogPatient {
@@ -156,14 +155,14 @@ public class DialogPatientAffiche extends DialogPatient {
 	public void initPanelBottom() {
 
 		super.initPanelBottom();
-		//creation du pannel du bas
+		// creation du pannel du bas
 		JPanel panelBas = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panelBas.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		panelBas.setPreferredSize(new Dimension(PANEL_WIDTH, 50));
 		contentPane.add(panelBas);
-		
-		//creation du bouton fermer
+
+		// creation du bouton fermer
 		btnFermer = new JButton("Fermer");
 		panelBas.add(btnFermer);
 	}

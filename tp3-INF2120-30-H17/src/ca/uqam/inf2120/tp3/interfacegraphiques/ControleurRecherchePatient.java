@@ -1,4 +1,4 @@
-package ca.uqam.inf2120.tp3.controleurs;
+package ca.uqam.inf2120.tp3.interfacegraphiques;
 
 import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
@@ -9,13 +9,20 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import ca.uqam.inf2120.tp3.interfacegraphiques.DialogPatientAffiche;
-import ca.uqam.inf2120.tp3.interfacegraphiques.DialogPatientAjout;
-import ca.uqam.inf2120.tp3.interfacegraphiques.DialogPatientEditer;
-import ca.uqam.inf2120.tp3.interfacegraphiques.FenetreRecherchePatients;
 import ca.uqam.inf2120.tp3.modele.Patient;
-import ca.uqam.inf2120.tp3.modele.Proprietaire;
 
+
+/**
+ * UQAM - Hiver 2017 - INF2120 - Groupe 30 - TP3
+ * 
+ * Classe ControleurRecherchePatient : controle la recherche d'un patient
+ * (nom, age,etc...)
+ * 
+ * 
+ * @author Doumo Doumo Serges=Michel - DOUS20078401 et Ezeckiel Gnepa
+ *         -GNEP09110902
+ * @version 5 avril 2017
+ */
 public class ControleurRecherchePatient extends ControleurPatient {
 	
 	private FenetreRecherchePatients uneVue;
@@ -29,27 +36,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
 		this.uneVue =_fenetreRecherche;
 		Resultat = new ArrayList<Patient>();
 		entete = new String[] { "Identifiant", "Nom",
-				"Priorité", "Date / Heure d'arrivée","Nom et prénom du propriotaire"  };
-		
-		Proprietaire proprioTest = new Proprietaire("Zekinan","Limonsso","","");
-		Patient patientTest = new Patient("Milou","2 ans","Félin","Grippe",2,proprioTest);
-		
-		Proprietaire proprioTest2 = new Proprietaire("Serge","Limonsso","","");
-		Patient patientTest2 = new Patient("Bobi","4 ans","Canin","Grippe",4,proprioTest2);
-		
-		Proprietaire proprioTest3 = new Proprietaire("aminata","jeanne","","");
-		Patient patientTest3 = new Patient("michel","3 ans","chevre","fievre",2,proprioTest3);
-		
-		Proprietaire proprioTest4 = new Proprietaire("Serge","Limonsso","","");
-		Patient patientTest4 = new Patient("jacques","5 ans","Canin","mal dentaire",4,proprioTest4);
-		
-		this.Model.placerPatient(patientTest);
-		this.Model.placerPatient(patientTest2);
-		this.Model.placerPatient(patientTest3);
-		this.Model.placerPatient(patientTest4);
-
-
-
+				"PrioritÃ©", "Date / Heure d'arrivÃ©e","Nom et prÃ©nom du propriÃ©taire"  };
 		
 		
 	}
@@ -70,7 +57,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
         	if(!FillData())
         	{
         		JOptionPane.showMessageDialog(this.uneVue,
-    					"Aucun patient n'existe dans le systï¿½me",
+    					"Aucun patient n'existe dans le systÃ¨me",
     					"SPT- Information",
     					JOptionPane.INFORMATION_MESSAGE);
         	}
@@ -112,14 +99,14 @@ public class ControleurRecherchePatient extends ControleurPatient {
 		        		if(!FillData())
 		            	{
 		            		JOptionPane.showMessageDialog(this.uneVue,
-		        					"Aucun patient n'a la priorité " + priorite + " dans le système ",
+		        					"Aucun patient n'a la prioritÃ© " + priorite + " dans le systÃ¨me ",
 		        					"SPT- Information",
 		        					JOptionPane.INFORMATION_MESSAGE);
 		            	}
 	        		} catch (NumberFormatException ex ) { 
 	        			
 	        			JOptionPane.showMessageDialog(this.uneVue,
-	        					"Rentrez une valeur numérique s'il vous plait ",
+	        					"Rentrez une valeur numÃ©rique s'il vous plait ",
 	        					"SPT- Information",
 	        					JOptionPane.ERROR_MESSAGE);
 	        		}
@@ -139,19 +126,19 @@ public class ControleurRecherchePatient extends ControleurPatient {
 		        		if(!FillData())
 		            	{
 		            		JOptionPane.showMessageDialog(this.uneVue,
-		        					"Aucun patient n'a une priorité inférieure a  " + priorite + " dans le système ",
+		        					"Aucun patient n'a une prioritÃ© infÃ©rieure Ã  " + priorite + " dans le systÃ¨me ",
 		        					"SPT- Information",
 		        					JOptionPane.INFORMATION_MESSAGE);
 		            	}
 	        		} catch (NumberFormatException ex ) { 
 	        			
 	        			JOptionPane.showMessageDialog(this.uneVue,
-	        					"Rentrez une valeur numérique s'il vous plait ",
+	        					"Rentrez une valeur numÃ©rique s'il vous plait ",
 	        					"SPT- Information",
 	        					JOptionPane.ERROR_MESSAGE);
 	        		}
 	        	}
-	        	//radio bouton priorité superieur a
+	        	//radio bouton prioritï¿½ superieur a
 	        	if(this.uneVue.getRdbtnSuppiorite().isSelected()){
 	        		
 	        		int priorite;
@@ -164,14 +151,14 @@ public class ControleurRecherchePatient extends ControleurPatient {
 		        		if(!FillData())
 		            	{
 		            		JOptionPane.showMessageDialog(this.uneVue,
-		        					"Aucun patient n'a une priorité supérieure a  " + priorite + " dans le système ",
+		        					"Aucun patient n'a une prioritÃ© supÃ©rieure Ã  " + priorite + " dans le systÃ¨me ",
 		        					"SPT- Information",
 		        					JOptionPane.INFORMATION_MESSAGE);
 		            	}
 	        		} catch (NumberFormatException ex ) { 
 	        			
 	        			JOptionPane.showMessageDialog(this.uneVue,
-	        					"Rentrez une valeur numérique s'il vous plait ",
+	        					"Rentrez une valeur numÃ©rique s'il vous plait ",
 	        					"SPT- Information",
 	        					JOptionPane.ERROR_MESSAGE);
 	        		}
@@ -203,7 +190,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
         	String Id = this.uneVue.getTablePatients().getValueAt(uneVue.getTablePatients().getSelectedRow(), 0).toString();
         	Patient unPatient = this.Model.rechercherParIndentifiant(Id); 
         	switch(unPatient.getEspece()){
-        	case "Félin":
+        	case "FÃ©lin":
         		EditerPatient.getRdbtnFelin().setSelected(true);
         		break;
         	case "Canin":
@@ -269,7 +256,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
         if(source == this.uneVue.getBtnSupprimer())
         {
         	int index = uneVue.getTablePatients().getSelectedRow();
-        	// Question avec les boutons de réponse Oui et Non
+        	// Question avec les boutons de rï¿½ponse Oui et Non
         	int reponse = JOptionPane.showConfirmDialog(null,
     				        "Voulez-vous supprimer le patient "+this.uneVue.getTablePatients()
     				        .getValueAt(index, 0).toString(),

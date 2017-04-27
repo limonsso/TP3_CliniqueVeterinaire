@@ -1,10 +1,11 @@
-package ca.uqam.inf2120.tp3.controleurs;
+package ca.uqam.inf2120.tp3.interfacegraphiques;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
 import ca.uqam.inf2120.tp3.modele.GestionUrgenceCliniqueVeterinaire;
+
 
 public class ControleurPatient implements ActionListener {
 

@@ -18,12 +18,11 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import ca.uqam.inf2120.tp3.controleurs.ControleurDialogPatient;
-
 /**
  * DialogEtudiantAjout : Fenetre (JDialog) d'ajout d'un étudiant.
  * 
- * @author Ismael Doukoure
+ * @author Doumo Doumo Serges=Michel - DOUS20078401 et Ezeckiel Gnepa
+ *         -GNEP09110902
  * @version Avril 2014
  * 
  */

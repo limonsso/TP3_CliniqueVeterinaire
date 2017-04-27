@@ -21,14 +21,12 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-import ca.uqam.inf2120.tp3.controleurs.ControleurPatient;
-import ca.uqam.inf2120.tp3.controleurs.ControleurRecherchePatient;
-
 /**
- * FenetreRechercheEtudiants : Fenetre (JFrame) de recherche d��tudiant avec des
+ * FenetreRechercheEtudiants : Fenetre (JFrame) de recherche d'étudiant avec des
  * etudiants dans la liste .
  * 
- * @author Ismael Doukoure
+ * @author Doumo Doumo Serges=Michel - DOUS20078401 et Ezeckiel Gnepa
+ *         -GNEP09110902
  * @version Avril 2014
  * 
  */
