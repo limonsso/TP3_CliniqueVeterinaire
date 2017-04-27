@@ -120,7 +120,8 @@ public class ControleurDialogPatient extends ControleurPatient {
 				patient = this.Model.rechercherParIndentifiant(uneVue.gettFId().getText());
 				patient.setAge(uneVue.gettFAge().getText());
 				patient.setEspece(espesce);
-				patient.setRaisonUrgence(uneVue.gettFAge().getText());
+				patient.modifierPriorite((Integer.parseInt(uneVue.getCboPriorite().getSelectedItem().toString())));
+				patient.setRaisonUrgence(uneVue.gettFRaison().getText());
 				patient.getProprietaire().setNom(uneVue.gettFNomP().getText());
 				patient.getProprietaire().setPrenom(uneVue.gettFPrenomP().getText());
 				patient.getProprietaire().setAdresse(uneVue.gettFAdresse().getText());

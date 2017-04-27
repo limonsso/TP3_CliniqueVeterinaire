@@ -313,7 +313,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
         		}
         	}
         	if(data.length>0){
-        		this.uneVue.Value = new DefaultTableModel(data,entete);
+        		this.uneVue.Value = creerModele();
         		this.uneVue.refresh();
         		bReturn=true;
         	}
@@ -325,5 +325,19 @@ public class ControleurRecherchePatient extends ControleurPatient {
     	}
 		return bReturn;
 	}
-	
+	private DefaultTableModel creerModele() {
+
+		return new DefaultTableModel(data, entete) {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			boolean[] columnEditables = new boolean[] { false, false, false, false, false };
+
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		};
+	}
 }
