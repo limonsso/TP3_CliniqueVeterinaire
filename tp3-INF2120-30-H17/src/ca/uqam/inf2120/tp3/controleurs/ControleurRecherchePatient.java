@@ -199,7 +199,7 @@ public class ControleurRecherchePatient extends ControleurPatient {
         if(source == this.uneVue.getBtnModifier())
         {
         	DialogPatientEditer EditerPatient = new DialogPatientEditer(this.uneVue);
-        	
+        	int index = uneVue.getTablePatients().getSelectedRow();
         	String Id = this.uneVue.getTablePatients().getValueAt(uneVue.getTablePatients().getSelectedRow(), 0).toString();
         	Patient unPatient = this.Model.rechercherParIndentifiant(Id); 
         	switch(unPatient.getEspece()){
@@ -237,6 +237,9 @@ public class ControleurRecherchePatient extends ControleurPatient {
         	EditerPatient.setModal(true);
         	EditerPatient.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         	EditerPatient.setVisible(true);
+        	
+        	Resultat.set(index, unPatient);
+        	FillData();
         }
       //Bouton "Afficher"
         if(source == this.uneVue.getBtnAfficher())
